@@ -77,17 +77,51 @@ class PlayerInput extends React.Component {
     }
 }
 
-PlayerInput.PropTypes = {
+PlayerInput.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired
 }
 export default class Battle extends React.Component {
+    constructor(props){
+        super(props)
+
+        this.state ={
+            playerOne: null,
+            playerTwo: null,
+        }
+        
+        this.handleSumbit = this.handleSumbit.bind(this)
+    }
+    handleSumbit(id, player) {
+        this.setState({
+            [id]: player
+        })
+    }
     render() {
+        const { playerOne, playerTwo } = this.state
+
         return (
             <React.Fragment>
                 <Instructions/>
 
-                <PlayerInput label="Label!" onSubmit={(value) => console.log('value!', value)}/>
+                <div className='player-container'>
+                    <h1 className='center-text header-lg'>Players</h1>
+                    <div className='row space-around'>
+                        {playerOne === null && (
+                            <PlayerInput
+                            label='Player One'
+                            onSubmit={(player) => this.handleSumbit('playerOne', player)}
+                            />
+                        )}
+
+                        {playerTwo === null && (
+                            <PlayerInput
+                            label='Player Two'
+                            onSubmit={(player) => this.handleSumbit('playerTwo', player)}
+                            />
+                        )}
+                    </div>
+                </div>                  
             </React.Fragment>
         )
     }
