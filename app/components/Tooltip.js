@@ -24,7 +24,7 @@ const styles = {
     }
   }
 
-export default function Tooltip ({ text, children, hovering }) {
+export default function Tooltip ({ text, children }) {
     return(
         <Hover>
             {(hovering) => (
