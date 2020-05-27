@@ -28,7 +28,7 @@ class App extends React.Component {
               <div className='container'>
                 <Nav />
 
-                <React.Suspense fallback={<Loading/>} >
+                <React.Suspense fallback={<Loading />} >
                   <Switch>
                     <Route exact path='/' component={Popular} />
                     <Route exact path='/battle' component={Battle} />
@@ -43,8 +43,7 @@ class App extends React.Component {
     )
   }
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-)
+ ReactDOM.render(
+   <App />,
+ document.getElementById('app')
+ )
